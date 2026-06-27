@@ -8,13 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  var userService = new UserService();
+
   applyButton.addEventListener('click', function () {
-    box.style.backgroundColor = colorInput.value;
+    userService.applyColor(box, colorInput.value);
   });
 
   randomButton.addEventListener('click', function () {
-    var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+    var randomColor = userService.generateRandomColor();
     colorInput.value = randomColor;
-    box.style.backgroundColor = randomColor;
+    userService.applyColor(box, randomColor);
   });
 });
